@@ -1,9 +1,11 @@
-import Navbar from './components/navbarcomponent/Navbar'; 
+import Navbar from "./components/navbarcomponent/Navbar";
+import productcart from "./productcart";
 
 function App() {
   return (
     <>
-      <Navbar />  {/* Endast Navbar-komponenten visas */}
+      <productcart />
+      <Navbar /> {/* Endast Navbar-komponenten visas */}
     </>
   );
 }
