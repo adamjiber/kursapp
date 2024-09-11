@@ -1,7 +1,12 @@
-const UserAtom = () => {
+const UserAtom = ({ value, onChange }) => {
     return (
         <div>
-            <input placeholder="username" type="username" />
+            <input 
+                placeholder="username" 
+                type="text" 
+                value={value}
+                onChange={onChange}
+            />
         </div>
     );
 };
