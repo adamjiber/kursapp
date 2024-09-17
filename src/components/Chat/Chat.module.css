@@ -1,0 +1,109 @@
+/* Add your Chat component styles here */
+
+.chatContainer {
+    display: flex;
+    height: 100vh;
+    background-color: #f0f0f0;
+  }
+  
+  .chatMain {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+  }
+  
+  .userList {
+    width: 200px;
+    background-color: #e0e0e0;
+    padding: 1rem;
+  }
+  
+  .messageList {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+    list-style-type: none;
+  }
+  
+  .messageInput {
+    display: flex;
+    padding: 1rem;
+    background-color: #fff;
+  }
+  
+  .inputField {
+    flex: 1;
+    padding: 0.5rem;
+    margin-right: 0.5rem;
+  }
+  
+  .sellerButton, .buyerButton, .deleteButton {
+    padding: 0.5rem 1rem;
+    margin-left: 0.5rem;
+    cursor: pointer;
+  }
+  
+  .sellerButton { background-color: #4CAF50; color: white; }
+  .buyerButton { background-color: #2196F3; color: white; }
+  .deleteButton { background-color: #f44336; color: white; }
+  
+  .ownMessage, .otherMessage {
+    display: flex;
+    margin-bottom: 1rem;
+  }
+  
+  .ownMessage { justify-content: flex-end; }
+  .otherMessage { justify-content: flex-start; }
+  
+  .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+  }
+  
+  .userItem {
+    padding: 0.5rem;
+    cursor: pointer;
+  }
+  
+  .userItem:hover {
+    background-color: #d0d0d0;
+  }
+  
+  .inputForm {
+    display: flex;
+    flex: 1;
+  }
+  
+  .buyerButton {
+    background-color: #2196F3;
+    color: white;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border: none;
+  }
+  
+  .sellerButton {
+    background-color: #4CAF50;
+    color: white;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border: none;
+  }
+  
+  .switchUserButton {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #ff9800;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .activeUser {
+    font-weight: bold;
+    background-color: #e0e0e0;
+  }
+  
