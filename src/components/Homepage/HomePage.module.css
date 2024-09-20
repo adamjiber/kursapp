@@ -1,4 +1,4 @@
-.home-page {
+.homePage {
   display: flex;
   flex-direction: column; 
   justify-content: flex-start;
@@ -8,20 +8,26 @@
   background-color: #f7f7f7; 
 }
 
-.home-page h1 {
+.homePage h1 {
   font-size: 2rem; 
   margin-bottom: 1.5rem;
   color: #333;
 }
 
-.home-page p {
+.homePage p {
   max-width: 600px;
   margin-bottom: 20px;
   color: #555; 
   font-size: 1.125rem; 
 }
 
-.home-page a {
+.buttonContainer {
+  display: flex;
+  gap: 1rem; /* Mellanrum mellan knapparna */
+  margin-bottom: 3rem; /* Extra mellanrum till nästa sektion */
+}
+
+.link {
   display: inline-block; 
   padding: 0.75rem 1.5rem;
   background-color: #007bff; 
@@ -31,28 +37,30 @@
   transition: background-color 0.3s ease;
 }
 
-.home-page a:hover {
+.link:hover {
   background-color: #0056b3;
 }
 
-.popular-books {
+.popularBooks {
   margin-top: 2rem;
   width: 100%; 
 }
 
-.popular-books h2 {
+.popularBooks h2 {
   font-size: 1.75rem;
   margin-bottom: 1.5rem;
   color: #333;
 }
 
-.popular-books ul {
+.popularBooks ul {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
+  list-style: none; 
+  padding: 0; 
 }
 
-.popular-books li {
+.popularBooks li {
   background-color: white;
   padding: 1rem;
   border-radius: 8px;
@@ -60,24 +68,23 @@
   flex-basis: calc(33.333% - 1rem); 
 }
 
-.popular-books img {
+.popularBooks img {
   width: 100%;
   height: auto;
   margin-bottom: 1rem;
 }
 
-.popular-books h3 {
+.popularBooks h3 {
   font-size: 1.25rem;
   margin-bottom: 0.5rem;
 }
 
-.popular-books p {
+.popularBooks p {
   margin-bottom: 0.5rem;
   color: #555;
 }
 
-.popular-books .text-blue-600 {
+.textBlue {
   color: #007bff;
   font-weight: bold;
 }
-
