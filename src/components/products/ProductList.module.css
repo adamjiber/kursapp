@@ -1,0 +1,245 @@
+/* BookList.module.css */
+
+.container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Responsive columns */
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .col12 {
+    width: 100%;
+  }
+  
+  .colMd6 {
+    width: 50%;
+  }
+  
+  .colLg4 {
+    width: 33.33%;
+  }
+  
+  @media (max-width: 768px) {
+    .colMd6 {
+      width: 100%;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .colLg4 {
+      width: 100%;
+    }
+  }
+  
+  /* Card styles */
+  .card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 10px;
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+  
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+  }
+  
+  .cardImgTop {
+    margin-top: 20px;
+    width: 100%;
+    height: 250px; 
+    object-fit: contain; 
+    cursor: pointer;
+  }
+  
+  .cardBody {
+    padding: 15px;
+  }
+  
+  .cardTitle {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .cardText {
+    color: #555;
+  }
+  
+  /* Button styles */
+  .btn {
+    display: inline-block;
+    padding: 8px 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    border: none;
+  }
+  
+  .btnInfo {
+    background-color: #17a2b8;
+    color: white;
+  }
+  
+  .btnInfo:hover {
+    background-color: #138496;
+  }
+  
+  .btnSuccess {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .btnSuccess:hover {
+    background-color: #218838;
+  }
+  
+  .btnDanger {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  .btnDanger:hover {
+    background-color: #c82333;
+  }
+  
+  .btnSecondary {
+    background-color: #6c757d;
+    color: white;
+  }
+  
+  .btnSecondary:hover {
+    background-color: #5a6268;
+  }
+  
+  /* Modal styles */
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px; 
+    overflow-y: auto; 
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    z-index: 1200;
+  }
+  
+  .modalContent {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 500px;
+    width: 100%;
+    max-height: 80vh;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    margin: 20px; 
+    cursor: pointer;
+    transform: translateX(40%);
+    overflow-y: auto;
+  }
+  
+  .modalHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+  }
+  
+  .modalTitle {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .close {
+    font-size: 1.5rem;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+  }
+  
+  .modalBody img {
+    width: 100%;
+    max-height: 250px; 
+    object-fit: contain; 
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  
+  .modalFooter {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #ddd;
+    padding: 20px;
+  }
+  
+  /* BookList header */
+  .bookListHeader {
+    background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
+    color: white;
+    padding: 50px 20px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+  }
+  
+  .bookListHeader h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .bookListHeader p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin: 0 auto;
+    max-width: 700px;
+  }
+  
+  .bookListHeader strong {
+    color: #ffe600;
+    font-size: 1.4rem;
+  }
+  
+  .bookListHeader p br {
+    margin-bottom: 10px;
+  }
+  
+  /* Modal responsive for mobile */
+  @media (max-width: 576px) {
+    .modalContent {
+      max-width: 90%;
+      margin: 10px;
+    }
+  }
+  
+  /* Scrollable modal content */
+  .modalBody {
+    max-height: 400px;
+    /* overflow-y: auto; */
+  }
