@@ -8,6 +8,8 @@ import terser from '@rollup/plugin-terser';
 import image from '@rollup/plugin-image';
 import postcss from 'rollup-plugin-postcss';
 
+import json from '@rollup/plugin-json';
+
 export default {
   input: 'src/index.js', // The entry point for your application
   output: [
@@ -46,6 +48,7 @@ export default {
     commonjs(),
     image(),
     terser(),
+    json(),
     babel({
       babelHelpers: 'bundled', // Bundles the helpers in the same file
       exclude: 'node_modules/**', // Only transpile your source code

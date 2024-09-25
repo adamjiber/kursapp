@@ -1,2 +1,4 @@
 import {Login} from './components/Login';
-export {Login};
+import {ProductStore} from "./components/products";
+
+export { ProductStore,Login};
