@@ -1,18 +1,23 @@
 import { useState, useEffect } from 'react';
 import { FaUser, FaHeart, FaShoppingCart, FaBars, FaTimes } from 'react-icons/fa';
+import { IoChatboxSharp } from "react-icons/io5";
+import { Link } from 'react-router-dom'; // Importera Link för att skapa klickbara länkar
 import styles from './Navbar.module.css'; // Importera CSS-modulen
 
 const navLinks = [
+  { title: 'Login', url: '/Login' },
+  { title: 'Register', url: '/Register' },
   { title: 'Home', url: '/' },
-  { title: 'About', url: '/about' },
-  { title: 'Services', url: '/services' },
-  { title: 'Contact', url: '/contact' }
+  { title: 'Products', url: '/Products' },
+  { title: 'Cart', url: '/Cart' },
+  { title: 'Chat', url: '/Chat' }
 ];
 
 const iconList = [
-  { icon: <FaUser /> },
-  { icon: <FaHeart /> },
-  { icon: <FaShoppingCart /> },
+  { icon: <FaUser />, url: '/Login' },
+  { icon: <FaHeart />, url: '/Favorites' }, // Exempel på favorit-ikon (du kan lägga till sidan senare)
+  { icon: <FaShoppingCart />, url: '/Cart' },
+  { icon: <IoChatboxSharp />, url: '/Chat' }
 ];
 
 const Navbar = () => {
@@ -47,12 +52,17 @@ const Navbar = () => {
             <div className={styles.navbarBrand}>KursApp</div>
             <ul className={styles.navLinks}>
               {navLinks.map((link, index) => (
-                <li key={index}>{link.title}</li>
+                <li key={index}>
+                  {/* Använd Link för att navigera till rätt rutt */}
+                  <Link to={link.url}>{link.title}</Link>
+                </li>
               ))}
             </ul>
             <ul className={styles.icons}>
               {iconList.map((item, index) => (
-                <div key={index}>{item.icon}</div>
+                <Link to={item.url} key={index}>
+                  {item.icon}
+                </Link>
               ))}
             </ul>
           </div>
@@ -72,7 +82,9 @@ const Navbar = () => {
               />
               <div className={styles.mobileNavContent}>
                 {navLinks.map((link, index) => (
-                  <span key={index}>{link.title}</span>
+                  <span key={index}>
+                    <Link to={link.url}>{link.title}</Link> {/* Klickbara textlänkar för mobil */}
+                  </span>
                 ))}
               </div>
             </div>
