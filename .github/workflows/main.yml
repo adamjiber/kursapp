@@ -24,4 +24,6 @@ jobs:
           diff-search: true # Search for changes in the last commit
       - name: Install dependencies
         run: npm install
+      - name: Build component (if needed)
+        run: npm run build
         
