@@ -1,0 +1,29 @@
+.productStore {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .productStoreTitle {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+  }
+  
+  .productStoreContent {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  
+  .componentWrapper {
+    width: 100%;
+  }
+  
+  /* Optional: Add some spacing or styling to separate components visually */
+  .componentWrapper + .componentWrapper {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+  }

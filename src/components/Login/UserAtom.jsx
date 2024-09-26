@@ -1,3 +1,4 @@
+import styles from './InputFields.module.css';
 const UserAtom = ({ value, onChange }) => {
     return (
         <div>

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import styles from './InputField.module.css'; 
+import styles from './InputFields.module.css';
 
 const PasswordAtom = ({ value, onChange }) => {
     const [showPassword, setShowPassword] = useState(false);

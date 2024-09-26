@@ -1,22 +1,28 @@
 import { useState, useEffect } from 'react';
 import { FaUser, FaHeart, FaShoppingCart, FaBars, FaTimes } from 'react-icons/fa';
+import { IoChatboxSharp } from "react-icons/io5";
+import { Link } from 'react-router-dom'; // Importera Link för att skapa klickbara länkar
 import styles from './Navbar.module.css'; // Importera CSS-modulen
 
 const navLinks = [
+  { title: 'Login', url: '/Login' },
+  { title: 'Register', url: '/Register' },
   { title: 'Home', url: '/' },
-  { title: 'About', url: '/about' },
-  { title: 'Services', url: '/services' },
-  { title: 'Contact', url: '/contact' }
+  { title: 'Products', url: '/Products' },
+  { title: 'Cart', url: '/Cart' },
+  { title: 'Chat', url: '/Chat' }
 ];
 
 const iconList = [
-  { icon: <FaUser /> },
-  { icon: <FaHeart /> },
-  { icon: <FaShoppingCart /> },
+  { icon: <FaUser />, url: '/Login' },
+  { icon: <FaHeart />, url: '/Favorites' }, // Exempel på favorit-ikon (du kan lägga till sidan senare)
+  { icon: <FaShoppingCart />, url: '/Cart' },
+  { icon: <IoChatboxSharp />, url: '/Chat' }
 ];
 
 const Navbar = () => {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 769);
+  // Fix: Använd säker initialisering av window.innerWidth i useState
+  const [isMobile, setIsMobile] = useState(() => window.innerWidth < 769);
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
@@ -30,13 +36,19 @@ const Navbar = () => {
     };
   }, []);
 
+  // Funktion för att toggla modal
   const toggleModal = () => {
     setShowModal(!showModal);
   };
 
-  const handleBarsIconClick = () => {
-    toggleModal();
-  };
+  // Fix: Rendera navigationslänkar med en separat funktion för återanvändning
+  const renderNavLinks = () => (
+    navLinks.map((link, index) => (
+      <li key={index}>
+        <Link to={link.url}>{link.title}</Link>
+      </li>
+    ))
+  );
 
   return (
     <>
@@ -46,13 +58,16 @@ const Navbar = () => {
           <div className={styles.container}>
             <div className={styles.navbarBrand}>KursApp</div>
             <ul className={styles.navLinks}>
-              {navLinks.map((link, index) => (
-                <li key={index}>{link.title}</li>
-              ))}
+              {renderNavLinks()} {/* Använder renderNavLinks-funktionen */}
             </ul>
             <ul className={styles.icons}>
+              {/* Fix: Omge ikonerna med li-element för semantisk korrekthet */}
               {iconList.map((item, index) => (
-                <div key={index}>{item.icon}</div>
+                <li key={index}>
+                  <Link to={item.url} aria-label={item.url.substring(1)}> {/* Fix: Lagt till aria-label för bättre tillgänglighet */}
+                    {item.icon}
+                  </Link>
+                </li>
               ))}
             </ul>
           </div>
@@ -62,7 +77,8 @@ const Navbar = () => {
         <nav className={styles.navbar}>
           <div className={styles.container}>
             <div className={styles.navbarBrand}>Logo</div>
-            <FaBars onClick={handleBarsIconClick} className={styles.mobileBarsIcon} />
+            {/* Fix: Använder toggleModal direkt på FaBars */}
+            <FaBars onClick={toggleModal} className={styles.mobileBarsIcon} />
           </div>
           {showModal && (
             <div className={styles.mobileNav}>
@@ -72,7 +88,9 @@ const Navbar = () => {
               />
               <div className={styles.mobileNavContent}>
                 {navLinks.map((link, index) => (
-                  <span key={index}>{link.title}</span>
+                  <span key={index}>
+                    <Link to={link.url}>{link.title}</Link> {/* Klickbara textlänkar för mobil */}
+                  </span>
                 ))}
               </div>
             </div>
