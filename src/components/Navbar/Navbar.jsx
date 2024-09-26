@@ -5,12 +5,14 @@ import { Link } from 'react-router-dom'; // Importera Link för att skapa klickb
 import styles from './Navbar.module.css'; // Importera CSS-modulen
 
 const navLinks = [
+  { title: 'Homepage', url: '/Hompage'},
   { title: 'Login', url: '/Login' },
   { title: 'Register', url: '/Register' },
   { title: 'Home', url: '/' },
   { title: 'Products', url: '/Products' },
   { title: 'Cart', url: '/Cart' },
   { title: 'Chat', url: '/Chat' }
+  
 ];
 
 const iconList = [
