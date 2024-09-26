@@ -5,6 +5,7 @@ import { ProductStore } from '../components/products';
 import { CartContainer } from '../components/Productcart';
 import { Login } from '../components/Login/Index'
 import { Register } from '../components/Register'
+import { HomePage } from '../components/Homepage'
 
 
 function AppRouter() {
@@ -12,7 +13,7 @@ function AppRouter() {
     <Router>
       <Navbar />
       <Routes>
-        {/* <Route path="/" element={<Home />} /> */}
+        <Route path="/Hompage" element={<HomePage />} />
         <Route path="/Chat" element={<Chat />} /> 
         <Route path="/Register" element={<Register />} />
         <Route path="/Login" element={<Login />} /> 
