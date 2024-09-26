@@ -4,3 +4,10 @@ on:
       - main
     paths:
       - 'package.json'
+jobs:
+  check-version-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # Important for the next step to have the complete git history
