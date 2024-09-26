@@ -16,3 +16,9 @@ jobs:
         with:
           node-version: '18'
           registry-url: 'https://registry.npmjs.org/'
+      - name: Check for version change
+        id: version_changed
+        uses: EndBug/version-check@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          diff-search: true # Search for changes in the last commit
