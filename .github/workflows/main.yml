@@ -22,3 +22,6 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           diff-search: true # Search for changes in the last commit
+      - name: Install dependencies
+        run: npm install
+        
