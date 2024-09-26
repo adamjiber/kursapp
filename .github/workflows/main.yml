@@ -1,8 +1,6 @@
-name: hello-kursapp
-on: push
-jobs:
-  any-job:
-    runs-on: ubuntu-latest
-    steps:
-      - name: any-step
-        run: echo "Hello Kursapp!"
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'package.json'
