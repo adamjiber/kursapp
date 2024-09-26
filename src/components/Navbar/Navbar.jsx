@@ -21,7 +21,8 @@ const iconList = [
 ];
 
 const Navbar = () => {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 769);
+  // Fix: Använd säker initialisering av window.innerWidth i useState
+  const [isMobile, setIsMobile] = useState(() => window.innerWidth < 769);
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
@@ -35,13 +36,19 @@ const Navbar = () => {
     };
   }, []);
 
+  // Funktion för att toggla modal
   const toggleModal = () => {
     setShowModal(!showModal);
   };
 
-  const handleBarsIconClick = () => {
-    toggleModal();
-  };
+  // Fix: Rendera navigationslänkar med en separat funktion för återanvändning
+  const renderNavLinks = () => (
+    navLinks.map((link, index) => (
+      <li key={index}>
+        <Link to={link.url}>{link.title}</Link>
+      </li>
+    ))
+  );
 
   return (
     <>
@@ -51,18 +58,16 @@ const Navbar = () => {
           <div className={styles.container}>
             <div className={styles.navbarBrand}>KursApp</div>
             <ul className={styles.navLinks}>
-              {navLinks.map((link, index) => (
-                <li key={index}>
-                  {/* Använd Link för att navigera till rätt rutt */}
-                  <Link to={link.url}>{link.title}</Link>
-                </li>
-              ))}
+              {renderNavLinks()} {/* Använder renderNavLinks-funktionen */}
             </ul>
             <ul className={styles.icons}>
+              {/* Fix: Omge ikonerna med li-element för semantisk korrekthet */}
               {iconList.map((item, index) => (
-                <Link to={item.url} key={index}>
-                  {item.icon}
-                </Link>
+                <li key={index}>
+                  <Link to={item.url} aria-label={item.url.substring(1)}> {/* Fix: Lagt till aria-label för bättre tillgänglighet */}
+                    {item.icon}
+                  </Link>
+                </li>
               ))}
             </ul>
           </div>
@@ -72,7 +77,8 @@ const Navbar = () => {
         <nav className={styles.navbar}>
           <div className={styles.container}>
             <div className={styles.navbarBrand}>Logo</div>
-            <FaBars onClick={handleBarsIconClick} className={styles.mobileBarsIcon} />
+            {/* Fix: Använder toggleModal direkt på FaBars */}
+            <FaBars onClick={toggleModal} className={styles.mobileBarsIcon} />
           </div>
           {showModal && (
             <div className={styles.mobileNav}>
