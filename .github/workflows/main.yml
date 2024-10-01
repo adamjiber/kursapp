@@ -26,4 +26,9 @@ jobs:
         run: npm install
       - name: Build component (if needed)
         run: npm run build
+      - name: Publish to NPM
+        if: steps.version_changed.outputs.changed == 'true'
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         
