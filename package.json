@@ -1,6 +1,6 @@
 {
   "name": "kursapp",
-  "private": true,
+  "private": false,
   "version": "0.8.0",
   "type": "module",
   "scripts": {
