@@ -1,15 +1,16 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import PasswordAtom from "./PasswordAtom";
 import UserAtom from "./UserAtom";
 import LoginButtonAtom from "./LoginButtonAtom";
+import styles from './InputField.module.css';  
 
-const Login = () => {
+const Login = ({ onRegisterClick }) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [users, setUsers] = useState([]);
     const [error, setError] = useState("");
 
-    // Laddar användardata från Json filen 
+    // Ladda användardata från JSON-filen
     useEffect(() => {
         fetch('/users.json')
             .then((response) => response.json())
@@ -28,19 +29,44 @@ const Login = () => {
 
         if (user) {
             alert("Login successful!");
-            // Här kan du lägga till logik för att spara användarens inloggning eller navigera till en annan sida
         } else {
             setError("Fel användarnamn eller lösenord. Försök igen.");
         }
     };
 
     return (
-        <>
-            <UserAtom value={username} onChange={(e) => setUsername(e.target.value)} />
-            <PasswordAtom value={password} onChange={(e) => setPassword(e.target.value)} />
-            <LoginButtonAtom title="Logga In" onClick={handleLogin} />
+        <div className={styles.loginWrapper}>
+            <h2 className={styles.title}>Login</h2>
+            {/* Använd stilen från `InputField.module.css` */}
+            <div className={styles.passwordWrapper}>
+                <UserAtom
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    className={styles.inputField}  
+                />
+            </div>
+            <div className={styles.passwordWrapper}>
+                <PasswordAtom
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className={styles.inputField}  
+                />
+            </div>
+            <LoginButtonAtom title="Logga In" onClick={handleLogin} className={styles.loginButton} />
+
             {error && <p style={{ color: 'red' }}>{error}</p>}
-        </>
+
+            {/* Text och länk för att navigera till registreringssidan */}
+            <p className={styles.registerText}>
+                Har du inget konto?{' '}
+                <button
+                    style={{ color: 'blue', textDecoration: 'underline', cursor: 'pointer', border: 'none', background: 'none' }}
+                    onClick={onRegisterClick}
+                >
+                    Registrera dig här
+                </button>
+            </p>
+        </div>
     );
 };
 

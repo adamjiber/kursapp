@@ -1,12 +1,15 @@
-import styles from './InputFields.module.css';
+import styles from './InputField.module.css';
+
 const UserAtom = ({ value, onChange }) => {
     return (
-        <div>
+        <div className={styles.passwordWrapper}>
             <input 
+                className={styles.inputField} 
                 placeholder="username" 
                 type="text" 
                 value={value}
                 onChange={onChange}
+                aria-label="Username"
             />
         </div>
     );

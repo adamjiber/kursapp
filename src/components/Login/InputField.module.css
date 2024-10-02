@@ -1,3 +1,4 @@
+
 .passwordWrapper {
     display: flex;
     align-items: center;
@@ -46,4 +47,43 @@
 .togglePassword:focus {
     outline: none;
     color: #004494;
+}
+
+/* Lägg till extra stilar för Login-komponenten */
+.loginWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    background-color: #f0f4f8;
+}
+
+.title {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+.registerText {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #666;
+}
+
+.loginButton {
+    margin-top: 20px;
+    padding: 12px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.loginButton:hover {
+    background-color: #0056b3;
 }
