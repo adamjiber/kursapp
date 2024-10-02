@@ -1,5 +1,8 @@
 /* Navbar.module.css */
 
+/* Importera Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Spicy+Rice&display=swap');
+
 /* Global Styling */
 * {
   box-sizing: border-box;
@@ -8,7 +11,7 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: Arial, sans-serif; /* Behåller Arial som standard */
 }
 
 .navbar {
@@ -26,8 +29,10 @@ body {
   padding: 0 1rem;
 }
 
+/* Google Font för "KursApp" */
 .navbarBrand {
-  color: white;
+  font-family: 'Spicy Rice', cursive; /* Använd Google Font för navbarBrand */
+  color: rgb(255, 208, 0);
   font-size: 1.5rem; /* Öka lite för att ge det en mer distinkt känsla */
   font-weight: bold;
   cursor: pointer;
@@ -41,7 +46,7 @@ body {
 
 .navLinks li {
   list-style: none;
-  font-size: 1rem; /* Justerat för att vara något större */
+  font-size: 1rem; /* Behåller Arial för länkar */
   cursor: pointer;
   transition: color 0.3s ease;
 }
