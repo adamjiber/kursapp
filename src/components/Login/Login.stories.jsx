@@ -44,7 +44,7 @@ export const Default = () => {
     setIsLoggedIn(true); // När inloggningen lyckas, sätt isLoggedIn till true
   };
 
-  // Återställ fetch för att undvika problem om `fetch` är mockat flera gånger
+  // Återställ fetch för att undvika problem om fetch är mockat flera gånger
   useEffect(() => {
     return () => {
       global.fetch = null;
@@ -60,10 +60,10 @@ export const Default = () => {
       ) : (
         <Login
           onRegisterClick={handleRegisterClick}
-          onLoginSuccess={handleLoginSuccess} // Lägg till `onLoginSuccess`-prop för att hantera inloggning
+          onLoginSuccess={handleLoginSuccess} // Lägg till onLoginSuccess-prop för att hantera inloggning
         />
       )}
-      {/* Lägg till en knapp för att gå tillbaka till `Login` */}
+      {/* Lägg till en knapp för att gå tillbaka till Login */}
       {showRegister && (
         <button onClick={handleLoginClick} style={{ marginTop: '20px' }}>
           Tillbaka till Login
