@@ -28,8 +28,9 @@ body {
 
 .navbarBrand {
   color: white;
-  font-size: 1.25rem;
+  font-size: 1.5rem; /* Öka lite för att ge det en mer distinkt känsla */
   font-weight: bold;
+  cursor: pointer;
 }
 
 .navLinks {
@@ -40,28 +41,39 @@ body {
 
 .navLinks li {
   list-style: none;
-  color: white;
-  font-size: 0.875rem;
+  font-size: 1rem; /* Justerat för att vara något större */
   cursor: pointer;
+  transition: color 0.3s ease;
 }
 
-.navLinks li:hover {
-  color: #d1d5db;
+.navLinks li a {
+  color: white;
+  text-decoration: none;
+  padding: 8px 12px;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.navLinks li a:hover {
+  color: #ffcc00; /* Gul hover-färg */
+  background-color: rgba(255, 255, 255, 0.1); /* Lätt bakgrundsfärg på hover */
+  border-radius: 5px; /* Liten rundning för ett mer polerat utseende */
 }
 
 .icons {
   display: flex;
   gap: 1.5rem;
   align-items: center;
+}
+
+.icons a {
   color: white;
+  font-size: 1.25rem;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
-.icons div {
-  cursor: pointer;
-}
-
-.icons div:hover {
-  color: #d1d5db;
+.icons a:hover {
+  color: #ffcc00; /* Samma hover-färg som för länkarna */
+  transform: scale(1.2); /* Liten zoom-effekt på hover */
 }
 
 /* Mobile Menu */
@@ -89,5 +101,5 @@ body {
   right: 1rem;
   color: white;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 24px;
 }
