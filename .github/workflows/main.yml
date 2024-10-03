@@ -1,0 +1,34 @@
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'package.json'
+jobs:
+  check-version-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # Important for the next step to have the complete git history
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          registry-url: 'https://registry.npmjs.org/'
+      - name: Check for version change
+        id: version_changed
+        uses: EndBug/version-check@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          diff-search: true # Search for changes in the last commit
+      - name: Install dependencies
+        run: npm install
+      - name: Build component (if needed)
+        run: npm run build
+      - name: Publish to NPM
+        if: steps.version_changed.outputs.changed == 'true'
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        

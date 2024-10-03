@@ -1,3 +1,4 @@
+
 .passwordWrapper {
     display: flex;
     align-items: center;
@@ -6,6 +7,7 @@
     max-width: 350px;
     margin: 20px 0;
 }
+
 
 .inputField {
     width: 100%;
@@ -20,10 +22,12 @@
     outline: none;
 }
 
+
 .inputField:focus {
     border-color: #007bff;
     box-shadow: 0 4px 6px rgba(0, 123, 255, 0.2);
 }
+
 
 .togglePassword {
     position: absolute;
@@ -39,11 +43,69 @@
     transition: color 0.3s ease;
 }
 
+
 .togglePassword:hover {
     color: #0056b3;
 }
 
+
 .togglePassword:focus {
     outline: none;
     color: #004494;
+}
+
+
+.loginButton {
+    padding: 12px 20px; 
+    font-size: 16px; 
+    color: #ffffff; 
+    background-color: #007bff; 
+    border: none; 
+    border-radius: 8px; 
+    cursor: pointer; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease; 
+}
+
+
+.loginButton:hover {
+    background-color: #0056b3; 
+    transform: translateY(-2px); 
+}
+
+
+.loginButton:active {
+    background-color: #003f7f; 
+    transform: translateY(0); 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+}
+
+
+.loginButton:focus {
+    outline: none; 
+    box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.5); 
+}
+
+
+.registerText {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #666;
+}
+
+
+.loginWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    background-color: #f0f4f8;
+}
+
+.title {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
 }

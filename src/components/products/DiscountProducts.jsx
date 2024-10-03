@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import styles from './DiscountProducts.module.css'; // Import the updated CSS module
+import styles from './DiscountProducts.module.css'; 
 
-const DiscountProducts = () => {
+const DiscountProducts = ({ originalPrice, showDiscount = true }) => {
   const [products, setProducts] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -11,7 +11,7 @@ const DiscountProducts = () => {
     const fetchProducts = async () => {
       try {
         const response = await axios.get('https://fakestoreapi.com/products');
-        // Simulate original and discounted prices
+        // original and discounted prices
         const productsWithDiscounts = response.data.map(product => ({
           ...product,
           originalPrice: product.price,
@@ -56,10 +56,20 @@ const DiscountProducts = () => {
             <br />
             <br />
             <p><strong>Category: </strong> {product.category}</p>
-            <strong>Original Price: </strong> <p className={styles.originalPrice}>$ {product.originalPrice.toFixed(2)}</p>
-            <p>
-             <strong> Discounted Price:</strong> <span className={styles.discountedPrice}>$ {product.discountedPrice.toFixed(2)}</span>
+            
+            {/* Use the prop originalPrice */}
+            <strong>Original Price: </strong> 
+            <p className={styles.originalPrice}>
+              ${originalPrice ? originalPrice.toFixed(2) : product.originalPrice.toFixed(2)}
             </p>
+
+            {/* show discounted if showDiscount is true */}
+            {showDiscount && (
+              <p>
+                <strong>Discounted Price:</strong> 
+                <span className={styles.discountedPrice}>$ {product.discountedPrice.toFixed(2)}</span>
+              </p>
+            )}
             <br />
             <div className={styles.cartBtn}>
               <button>Add to Cart</button>
@@ -80,7 +90,11 @@ const DiscountProducts = () => {
             <p><strong>Category: </strong> {selectedProduct.category}</p>
 
             <p><strong>Description:</strong> {selectedProduct.description}</p>
-            <p> <strong> New Price:</strong> <span className={styles.discountedPrice}> ${selectedProduct.discountedPrice.toFixed(2)}</span></p>
+            <p> <strong> New Price:</strong> 
+              <span className={styles.discountedPrice}>
+                ${selectedProduct.discountedPrice.toFixed(2)}
+              </span>
+            </p>
             <div className={styles.modalActions}>
               <button onClick={handleClose}>Close</button>
               <button className={styles.btnSuccess}>Add to Cart</button>

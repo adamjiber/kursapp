@@ -1,14 +1,29 @@
 import React, { useEffect, useState, useRef } from 'react';
 import styles from './ProductSearch.module.css';
 
-const ProductSearch = () => {
-  const [products, setProducts] = useState([]);
+const ProductSearch = ({
+  loading: initialLoading = false,
+  noResult: initialNoResult = false,
+  products: initialProducts = [],
+  showModal: initialShowModal = false,
+  selectedProduct: initialSelectedProduct = null,
+  onSearch, // Custom search function, used to filter products
+}) => {
   const [query, setQuery] = useState('');
-  const [showModal, setShowModal] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [noResult, setNoResult] = useState(false);
+  const [loading, setLoading] = useState(initialLoading);
+  const [noResult, setNoResult] = useState(initialNoResult);
+  const [products, setProducts] = useState(initialProducts);
+  const [showModal, setShowModal] = useState(initialShowModal);
+  const [selectedProduct, setSelectedProduct] = useState(initialSelectedProduct);
   const inputRef = useRef(null);
+
+  useEffect(() => {
+    setLoading(initialLoading);
+    setNoResult(initialNoResult);
+    setProducts(initialProducts);
+    setShowModal(initialShowModal);
+    setSelectedProduct(initialSelectedProduct);
+  }, [initialLoading, initialNoResult, initialProducts, initialShowModal, initialSelectedProduct]);
 
   const searchProducts = (e) => {
     e.preventDefault();
@@ -20,24 +35,24 @@ const ProductSearch = () => {
     setLoading(true);
     setNoResult(false);
 
-    fetch(`https://fakestoreapi.com/products`)
-      .then((response) => response.json())
-      .then((data) => {
-        const filteredProducts = data.filter(product =>
-          product.title.toLowerCase().includes(query.toLowerCase())
-        );
-        if (filteredProducts.length > 0) {
-          setProducts(filteredProducts);
-        } else {
-          setProducts([]);
+    // Check if `onSearch` is provided
+    if (onSearch) {
+      onSearch(query)
+        .then((searchResults) => {
+          if (searchResults && searchResults.length > 0) {
+            setProducts(searchResults);
+            setNoResult(false);
+          } else {
+            setProducts([]);
+            setNoResult(true);
+          }
+          setLoading(false);
+        })
+        .catch(() => {
+          setLoading(false);
           setNoResult(true);
-        }
-        setLoading(false);
-      })
-      .catch(() => {
-        setLoading(false);
-        setNoResult(true);
-      });
+        });
+    }
   };
 
   const handleShowModal = (product) => {
@@ -99,7 +114,8 @@ const ProductSearch = () => {
               <h3 className={styles.cardTitle}>
                 {product.title.length > 40 ? `${product.title.substring(0, 37)}...` : product.title}
               </h3>
-              <p className={styles.cardText}> <strong>Description: </strong>
+              <p className={styles.cardText}>
+                <strong>Description: </strong>
                 {product.description.length > 100
                   ? `${product.description.substring(0, 97)}...`
                   : product.description}
@@ -130,17 +146,21 @@ const ProductSearch = () => {
                 className={styles.modalImg}
               />
               <h3>{selectedProduct.title}</h3>
-              <p><strong>Description: </strong>{selectedProduct.description}</p>
-              <p><strong>Price: </strong>${selectedProduct.price}</p>
+              <p>
+                <strong>Description: </strong>
+                {selectedProduct.description}
+              </p>
+              <p>
+                <strong>Price: </strong>${selectedProduct.price}
+              </p>
             </div>
-          <div className={styles.modalFooter}>
-            <button onClick={handleCloseModal} className={styles.closeBtn}>
-              Close
-            </button>
-            <button className={styles.addBtn}>Add to Cart</button>
+            <div className={styles.modalFooter}>
+              <button onClick={handleCloseModal} className={styles.closeBtn}>
+                Close
+              </button>
+              <button className={styles.addBtn}>Add to Cart</button>
+            </div>
           </div>
-          </div>
-  
         </div>
       )}
     </div>

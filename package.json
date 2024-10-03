@@ -1,7 +1,11 @@
 {
   "name": "kursapp",
   "private": false,
+<<<<<<< HEAD
   "version": "0.1.0",
+=======
+  "version": "0.8.1",
+>>>>>>> 5183b6c1190356cf9a0f2cf1a55b9094372c5e06
   "type": "module",
   "scripts": {
     "dev": "vite",

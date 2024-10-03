@@ -1,0 +1,61 @@
+/* Register.module.css */
+
+/* Styles for the form itself */
+.form {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fdf3f3;
+}
+
+/* The input */
+input {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Register Title*/
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+  color: black;
+}
+
+/* Style for Button  */
+button {
+  padding: 10px;
+  background-color: #f6502e;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #f5684c;
+}
+
+/* Message */
+.message {
+  color: black;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.error {
+  color: black;
+  font-size: 14px;
+  margin-top: 10px;
+}
