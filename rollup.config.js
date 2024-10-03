@@ -2,18 +2,17 @@ import pkg from './package.json' assert {type: "json"};
 
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
-import { babel } from '@rollup/plugin-babel';
+import {babel} from '@rollup/plugin-babel';
 
 import terser from '@rollup/plugin-terser';
 import image from '@rollup/plugin-image';
 import postcss from 'rollup-plugin-postcss';
-
 import json from '@rollup/plugin-json';
 
 export default {
-  input: 'src/index.js', // The entry point for your application
-  output: [
-    {
+    input: 'src/index.js', // The entry point for your application
+    output: [
+        {
             file: pkg.main, // Use package.json's "main" for the CommonJS output
             format: 'cjs',
             exports: 'named',
@@ -35,25 +34,25 @@ export default {
                 react: 'React',
                 'react-dom': 'ReactDOM'
             }
-        }    
-  ],
-  plugins: [
-    postcss({
+        }
+    ],
+    plugins: [
+        postcss({
             extensions: ['.css'],
-    }),
-    resolve({
+        }),
+        resolve({
             extensions: ['.js', '.jsx'],
             dedupe: ['prop-types']
         }),
-    commonjs(),
-    image(),
-    terser(),
-    json(),
-    babel({
-      babelHelpers: 'bundled', // Bundles the helpers in the same file
-      exclude: 'node_modules/**', // Only transpile your source code
-      presets: ['@babel/preset-env', '@babel/preset-react']
-    }),
-  ],
-  external: Object.keys(pkg.peerDependencies || {})
+        commonjs(),
+        image(),
+        json(),
+        terser(),
+        babel({
+            babelHelpers: 'bundled', // Bundles the helpers in the same file
+            exclude: 'node_modules/**', // Only transpile your source code
+            presets: ['@babel/preset-env', '@babel/preset-react']
+        }),
+    ],
+    external: Object.keys(pkg.peerDependencies || {})
 };
