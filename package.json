@@ -10,7 +10,7 @@
     "dist",
     "assets/fonts",
     "README.md"
-  ],ä
+  ],
   "scripts": {
     "dev": "storybook dev -p 6006",
     "build": "rollup -c",
